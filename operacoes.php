@@ -3,9 +3,9 @@
 $idade = 29;
 $idadeDaqui10Anos = $idade + 10;
 
-echo $idadeDaqui10Anos;
+echo $idadeDaqui10Anos ;
 
-/*Sinais das operações matemáticas
+/*Sinais das operaï¿½ï¿½es matemï¿½ticas
  * $soma = 2 + 2;
  * $subtracao = 2 - 2;
  * $multiplicacao = 2 * 2;
