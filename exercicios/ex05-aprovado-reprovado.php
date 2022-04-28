@@ -2,4 +2,4 @@
 
 $m = $_GET["nota"];
 
-$sit = $m < 7 ? "recuperacao" : "aprovador";
+$sit = $m < 7 ? "recuperacao" : "aprovado";
