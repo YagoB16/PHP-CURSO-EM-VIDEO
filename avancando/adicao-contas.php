@@ -43,6 +43,6 @@ $contasCorrentes [] = [
     'saldo' => 1000
 ];
 
-Porém essa situação muda caso seja uma STRING, veremos no arquivo conta2.php
+Porém essa situação muda caso seja uma STRING, veremos no arquivo adicao-conta2.php
 
 */
