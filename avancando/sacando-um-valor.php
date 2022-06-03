@@ -1,5 +1,11 @@
 <?php
  //Foi criado uma função para exibir a mensagem, o codigo ficou isolado. Subrotina
+ /**
+  * function nomeDaRotina ($parametro)
+{
+    // código da subrotina
+}
+ */
 function exibeMensagem($mensagem) {
     echo $mensagem . PHP_EOL;
 }
