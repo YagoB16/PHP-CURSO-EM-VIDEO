@@ -7,7 +7,7 @@
 $array = [ 
     1 => 'a',
     '1' => 'b',
-    1.5 => 'c', //Será convertido para 1 inteiro, caso seja outro numero, ele sempre ira aproximar para o numero inteiro anterior.
+    1.5 => 'c', //Será convertido para um inteiro, caso seja outro numero, ele sempre ira aproximar para o numero inteiro anterior.
     true => 'd'
 ]; //Essa aqui irá aparecer apenas o "d" pois o valor será 1 e sobrescreverá os anteriores
 
