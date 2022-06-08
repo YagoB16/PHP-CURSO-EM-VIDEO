@@ -1,40 +1,41 @@
 <?php
- //Foi criado uma função para exibir a mensagem, o codigo ficou isolado. Subrotina
- /**
-  * function nomeDaRotina ($parametro)
-{
-    // código da subrotina
-}
- */
-function exibeMensagem($mensagem) {
+
+function exibeMensagem($mensagem){
     echo $mensagem . PHP_EOL;
 }
 
+function sacar($conta, $valorASacar){
+    if ($valorASacar > $conta['saldo']) { // Se (valor do saque for maior que o saldo da conta)
+        exibeMensagem("Você não pode sacar este valor"); //vai exibir essa mensagem e não vai retirar o valor da conta.
+    } else {// Se não, caso o valor do saldo seja maior que o valor para sacar
+        $conta['saldo'] -= $valorASacar;// nessa linha será feito o saque 
+    }
+    return $conta;// Terminará imediatamente sua execução, e retornará seus argumentos como valor à chamada da função
+}
+
+function deposito($conta, $valorDeposito){
+    $conta['saldo'] += $valorDeposito; //adicionar o valor do deposito
+    return $conta;
+}
 
 $contasCorrentes = [
-    12345678890 => [
-        'titular' => 'Yago',
-        'saldo' => 200
+    '123.456.789-10' => [
+        'titular' => 'Maria',
+        'saldo' => 10000
     ],
-    12334768901 => [
-        'titular' => 'Samuel',
-        'saldo'=> 1200
+    '123.456.789-11' => [
+        'titular' => 'Alberto',
+        'saldo' => 300
     ],
-    87266123445 => [
-        'titular' => 'Caio',
-        'saldo' => 1500
+    '123.256.789-12' => [
+        'titular' => 'Vinicius',
+        'saldo' => 100
     ]
 ];
 
- //$contasCorrentes[12345678890]['saldo'] -= 700 ;
- //O sinal de -= é para  $contasCorrentes[12345678890]['saldo'] = $contasCorrentes[12345678890]['saldo'] - 500 ;
- //Na expressão acima, eu retirei 500 do saldo do cliente cujo o cpf é 12345678890
 
- if (500 > $contasCorrentes[12345678890]['saldo']){
-    exibeMensagem(mensagem: "Você não pode sacar este valor");
- } else{
-    $contasCorrentes[12345678890]['saldo'] -= 500 ;
- }
-foreach($contasCorrentes as $cpf => $conta){
-  exibeMensagem($cpf . ' ' . $conta['titular'] . ' ' . $conta['saldo']); 
+$contasCorrentes['123.456.789-10'] = deposito($contasCorrentes['123.456.789-10'], 500);// aqui são passados dois valores([conta corrente nesse cpf], valor para ser adicionado ou tirado)
+
+foreach ($contasCorrentes as $cpf => $conta) {
+    exibeMensagem($cpf . " " . $conta['titular'] . ' ' . $conta['saldo']);
 }
