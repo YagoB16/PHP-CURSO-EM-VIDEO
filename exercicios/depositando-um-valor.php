@@ -5,16 +5,20 @@ function exibeMensagem($mensagem){
 }
 
 function sacar($conta, $valorASacar){
-    if ($valorASacar > $conta['saldo']) { // Se (valor do saque for maior que o saldo da conta)
-        exibeMensagem("Você não pode sacar este valor"); //vai exibir essa mensagem e não vai retirar o valor da conta.
-    } else {// Se não, caso o valor do saldo seja maior que o valor para sacar
-        $conta['saldo'] -= $valorASacar;// nessa linha será feito o saque 
+    if ($valorASacar > $conta['saldo']) { 
+        exibeMensagem("Você não pode sacar este valor"); 
+        $conta['saldo'] -= $valorASacar;
     }
-    return $conta;// Terminará imediatamente sua execução, e retornará seus argumentos como valor à chamada da função
+    return $conta;
 }
 
 function deposito($conta, $valorDeposito){
-    $conta['saldo'] += $valorDeposito; //adicionar o valor do deposito
+    if($valorDeposito > 0 ){
+        $conta['saldo'] += $valorDeposito; 
+    }else{
+        exibeMensagem(mensagem:"Apenas depositos acima de 1$");
+    }
+    
     return $conta;
 }
 
