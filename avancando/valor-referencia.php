@@ -11,32 +11,31 @@ $contasCorrentes = [
         'titular' => 'Alberto',
         'saldo' => 300
     ],
-    12325678912 => [
+    '123.456.789-12' => [
         'titular' => 'Vinicius',
         'saldo' => 1000
     ]
 ];
 
 
-$contasCorrentes['123.456.789-11'] = sacar(
-    $contasCorrentes['123.456.789-11'],
-    valorASacar: 8
-);
-
-$contasCorrentes['123.456.789-10'] = sacar(
+$contasCorrentes['123.456.789-10'] = deposito(
     $contasCorrentes['123.456.789-10'],
-    valorASacar: 200
+    valorDeposito: 500
+);
+$contasCorrentes['123.456.789-11'] = deposito(
+    $contasCorrentes['123.456.789-11'], 
+    valorDeposito: 500
+);
+$contasCorrentes['123.456.789-12'] = sacar(
+    $contasCorrentes['123.456.789-12'],
+    valorASacar: 500
 );
 
-$contasCorrentes[12325678912] = deposito(
-    $contasCorrentes[12325678912],
-    valorDeposito: 200
-);
-
-titularComMaiuscula($contasCorrentes['123.456.789.11']);
+titularComNomeMaiusculas($contasCorrentes['123.456.789-10']);
 
 foreach ($contasCorrentes as $cpf => $conta) {
+    list('titular' => $titular, 'saldo' => $saldo) = $conta; // ou  ['titular' => $titular, 'saldo' => $saldo] = $conta;
     exibeMensagem(
-        mensagem: "$cpf $conta[titular]  $conta[saldo]"// outra maneira é mensagem: $cpf {$conta['titular']}  {$conta['saldo']}
+        mensagem: "$cpf $titular $saldo"
     );
 }
