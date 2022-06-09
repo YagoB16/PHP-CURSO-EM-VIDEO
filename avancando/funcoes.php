@@ -1,6 +1,7 @@
 <?php
 
-function guardafuncao(){
+function guardafuncao()
+{
   /**  function exibeMensagem(string $mensagem){
         echo $mensagem . PHP_EOL;
     }
@@ -23,7 +24,7 @@ function guardafuncao(){
         return $conta;
     }
     
-    function titularComNomeMaiusculas(array $conta)
+    function titularComNomeMaiusculas(array &$conta) //Ao utilizar o & antes da variável é passada por referencia, 
     {
         $conta['titular'] = strtoupper($conta['titular']); //strtoupper usado para pegar uma string e colocar todos caracteres em maiuscula.
         echo $conta['titular'] . PHP_EOL;
@@ -31,11 +32,13 @@ function guardafuncao(){
     } */
 }
 
-function exibeMensagem(string $mensagem){
+function exibeMensagem(string $mensagem)
+{
     echo $mensagem . PHP_EOL;
 }
 
-function sacar(array $conta, float $valorASacar){
+function sacar(array $conta, float $valorASacar)
+{
     if ($valorASacar > $conta['saldo']) { 
         exibeMensagem("Você não pode sacar este valor"); 
     } else {
@@ -44,7 +47,8 @@ function sacar(array $conta, float $valorASacar){
     return $conta;
 }
 
-function deposito(array $conta, float $valorDeposito){
+function deposito(array $conta, float $valorDeposito)
+{
     if($valorDeposito > 0){
         $conta['saldo'] += $valorDeposito; 
     }else{
@@ -53,9 +57,8 @@ function deposito(array $conta, float $valorDeposito){
     return $conta;
 }
 
-function titularComNomeMaiusculas(array $conta)
+function titularComNomeMaiusculas(array &$conta)// usado para passagem por referencia
 {
     $conta['titular'] = strtoupper($conta['titular']);
-    echo $conta['titular'] . PHP_EOL;
-    
+       
 }
