@@ -11,7 +11,7 @@ $contasCorrentes = [
         'titular' => 'Alberto',
         'saldo' => 300
     ],
-    12325678912 => [
+    '123.256.789-12' => [
         'titular' => 'Vinicius',
         'saldo' => 1000
     ]
@@ -28,8 +28,8 @@ $contasCorrentes['123.456.789-10'] = sacar(
     valorASacar: 200
 );
 
-$contasCorrentes[12325678912] = deposito(
-    $contasCorrentes[12325678912],
+$contasCorrentes['123.256.789-12'] = deposito(
+    $contasCorrentes['123.256.789-12'],
     valorDeposito: 200
 );
 
