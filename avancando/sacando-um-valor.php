@@ -19,7 +19,7 @@ function exibeMensagem($mensagem) {
 
 function sacar()
 {
-    $contasCorrentes
+    
 
     if(500 > $contas['saldo']){
         exibeMensagem(mensagem:"você não pode sacar");
