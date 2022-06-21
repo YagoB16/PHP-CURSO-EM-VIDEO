@@ -1,0 +1,9 @@
+Anotações para estudos futuros
+
+Método acessores :getter: utlizado para acessar algo em um objeto com mais segurança
+
+Método modificadores :sett: modificam coisas dentro de um objeto com mais segurança
+-normalmente este método precisa de um parâmetro.
+
+Método construtor :construct: 
+
