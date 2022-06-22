@@ -17,12 +17,12 @@ class ContaBanco{
 
         if($type == 'cc'){
             $this -> setSaldo(50);//setSaldo, o set é utilizado para modificar informação(nesse caso adiciona 50 ao saldo).
-            echo "Sua conta corrente foi criada.";
+            echo "Sua conta corrente foi criada." . PHP_EOL;
             
 
         }elseif($type == 'cp'){
             $this -> setSaldo(150);//setSaldo, o set é utilizado para modificar informação(nesse caso adiciona 150 ao saldo).
-            echo "Sua conta poupança foi criada.";
+            echo "Sua conta poupança foi criada." . PHP_EOL;
            
         }
     }
@@ -47,6 +47,7 @@ class ContaBanco{
                 echo "Você não tem esse valor disponivel para saque.";
             }else{
                 $this -> setSaldo($this -> getSaldo() - $valorAsacar);
+                echo "Saque autorizado na conta de {$this-> getTitular()}" . PHP_EOL;
             }
         }else{
             echo"a conta está fechada";
@@ -57,7 +58,7 @@ class ContaBanco{
     {
         if($this -> getStatus(true)){
             if($valorAdepositar < 0){
-                echo "Digite um valor válido para depósito.";
+                echo "Digite um valor válido para depósito." . PHP_EOL;
             }else{
                 $this -> setSaldo($this -> getSaldo() + $valorAdepositar);//dentro do setSaldo(o getSaldo ira buscar o valor presente nessa conta  + o valor passado pela variável $valorAdepositar).
             }
