@@ -1,4 +1,3 @@
-
 <?php
 
 class ContaBanco{
@@ -60,14 +59,26 @@ class ContaBanco{
             if($valorAdepositar < 0){
                 echo "Digite um valor válido para depósito." . PHP_EOL;
             }else{
-                $this -> setSaldo($this -> getSaldo() + $valorAdepositar);//dentro do setSaldo(o getSaldo ira buscar o valor presente nessa conta  + o valor passado pela variável $valorAdepositar).
+                $this -> setSaldo($this -> getSaldo() + $valorAdepositar);//dentro do setSaldo(o getSaldo ira buscar o valor presente nessa conta  + o valor passado pela variável $valorAdepositar). o set é utilizado para modificar as informações.
             }
             }else {
                 echo "Não existe conta aberta ";
         }
     }
 
-    public function pagarMensalidade(){
+    public function transefir(float $valorAtransferir,  $contaDestino)//quando fizer uma transferencia passar os paramentros "conta que ira transferir -> transferir(valor para tranferir, variavel da conta que ira receber)
+    {
+        if($valorAtransferir > $this->getSaldo()){
+            echo "Você não pode transferir esse valor." . PHP_EOL;
+            return;
+        }
+        $this -> sacar($valorAtransferir);
+        $contaDestino -> depositar($valorAtransferir);
+        echo "Transferencia da conta de {$this->getTitular()} feita com sucesso." . PHP_EOL;
+    }
+
+    public function pagarMensalidade()
+    {
         if($this->getTipo()== "cc"){
             $vmensalidade = 12;
         }elseif($this -> getTipo()=="cp"){
@@ -82,60 +93,62 @@ class ContaBanco{
 
   //metodos especiais
 
-    public function __construct() //sempre que criar uma conta
+    public function __construct() //sempre que criar uma conta, as informações abaixo serão os padrões.
     {
-        $this -> setSaldo(0); //o Saldo irá receber 0.
-         $this -> setStatus(false); //o Status será false.
-         echo "Conta criada com sucesso" . PHP_EOL;
+       
+        $this-> ambiente ="Banco do Yagu";
+        $this -> setSaldo(0); //O Saldo irá receber 0.
+        $this -> setStatus(false); //O Status será false.
+        echo "Conta criada com sucesso" . PHP_EOL;
     }
 
-    public function getNumConta()//get não recebe parametro
+    public function getNumConta()//get não recebe parametro, e é utilizado para acessar/mostrar informações.
     {
         return $this -> numConta ;
     }
 
-    public function setnumConta(int $nconta)// set recebe parametro
+    public function setnumConta(int $nconta)// set recebe parametro, e é utilizado para modificar informações.
     {
         $this -> numConta = $nconta;// numConta é um atributo e $nconta é uma variavel.
     }
 
-    public function getTipo()
+    public function getTipo()//get não recebe parametro, e é utilizado para acessar/mostrar informações.
     {
         return $this -> tipo;
     }
 
-    public function setTipo(string $type)
+    public function setTipo(string $type)// set recebe parametro, e é utilizado para modificar informações.
     {
         $this -> tipo = $type;
         
     } 
     
-    public function getTitular()
+    public function getTitular()//get não recebe parametro, e é utilizado para acessar/mostrar informações.
     {
         return $this -> titular;
     }   
 
-    public function setTitular(string $dono)
+    public function setTitular(string $dono)// set recebe parametro, e é utilizado para modificar informações.
     {
         $this -> titular = $dono;
     }
 
-    public function getSaldo()
+    public function getSaldo()//get não recebe parametro, e é utilizado para acessar/mostrar informações.
     {
         return $this -> saldo;
     }
 
-    public function setSaldo(float $sal)
+    public function setSaldo(float $sal)// set recebe parametro, e é utilizado para modificar informações.
     {
         $this -> saldo = $sal;
     }
 
-    public function getStatus()
+    public function getStatus()//get não recebe parametro, e é utilizado para acessar/mostrar informações.
     {
         return $this -> status;
     }
 
-    public function setStatus(bool $st)
+    public function setStatus(bool $st)// set recebe parametro, e é utilizado para modificar informações.
     {
         $this -> status = $st;
     }
