@@ -6,6 +6,7 @@ class ContaBanco{
     private string $titular;
     private float $saldo;
     private bool $status;
+    private string $cpfTitular;
 
 
   //metodos
@@ -93,9 +94,10 @@ class ContaBanco{
 
   //metodos especiais
 
-    public function __construct() //sempre que criar uma conta, as informações abaixo serão os padrões.
+    public function __construct(string $cpfTitular, string $titular) //sempre que criar uma conta, as informações abaixo serão os padrões.
     {
-       
+        $this-> setcpfTitular($cpfTitular);
+        $this -> setTitular($titular);
         $this-> ambiente ="Banco do Yagu";
         $this -> setSaldo(0); //O Saldo irá receber 0.
         $this -> setStatus(false); //O Status será false.
@@ -122,6 +124,17 @@ class ContaBanco{
         $this -> tipo = $type;
         
     } 
+
+    public function getcpfTitular()
+    {
+        return $this -> cpf;
+
+    }
+
+    public function setcpfTitular(string $cpfTitular)
+    {
+        $this -> cpf = $cpfTitular;
+    }
     
     public function getTitular()//get não recebe parametro, e é utilizado para acessar/mostrar informações.
     {
