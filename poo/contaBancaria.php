@@ -6,7 +6,7 @@ class ContaBanco{
     private string $titular;
     private float $saldo;
     private bool $status;
-    private string $cpfTitular;
+    private string $cpf;
 
 
   //metodos
@@ -73,7 +73,7 @@ class ContaBanco{
             echo "Você não pode transferir esse valor." . PHP_EOL;
             return;
         }
-        $this -> sacar($valorAtransferir);
+        $this -> setSaldo($this -> getSaldo()- $valorAtransferir);//setSaldo irá alterar o saldo $this(conta nessa variável), e dentro do (o getSaldo trará o valor do saldo em conta que será "-" o valor da transferencia).
         $contaDestino -> depositar($valorAtransferir);
         echo "Transferencia da conta de {$this->getTitular()} feita com sucesso." . PHP_EOL;
     }
@@ -96,8 +96,8 @@ class ContaBanco{
 
     public function __construct(string $cpfTitular, string $titular) //sempre que criar uma conta, as informações abaixo serão os padrões.
     {
-        $this-> setcpfTitular($cpfTitular);
-        $this -> setTitular($titular);
+        $this-> setcpfTitular($cpfTitular);//Se não for passado esse valore por parametro, dará um erro.
+        $this -> setTitular($titular);//Se não for passado esse valore por parametro, dará um erro.
         $this-> ambiente ="Banco do Yagu";
         $this -> setSaldo(0); //O Saldo irá receber 0.
         $this -> setStatus(false); //O Status será false.
