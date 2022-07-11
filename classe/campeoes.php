@@ -117,7 +117,7 @@ class lutador{
         $this-> setCategoria();
     }
 
-    public function setCategoria()
+    private function setCategoria()
     {
         if ($this -> peso < 52.2){
             $this -> categoria = "Inválido";

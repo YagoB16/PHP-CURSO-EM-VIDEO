@@ -3,7 +3,7 @@ require_once 'campeoes.php';
 
 $l = [0, 1, 2, 3];
 
-$l[0] = new lutador(
+$l[0] = new lutador( //Objeto
     "João", //nome
     "Brasil", //nacionalidade
     31, //idade
@@ -44,5 +44,5 @@ $l[3] = new lutador(
     3
 );
 
-$l[1] -> apresentar();
-$l[1] -> status();
+$l[3] -> apresentar();
+$l[3] -> status();
