@@ -12,16 +12,15 @@ class Conta
     private string $nomeTitular;
     private float $saldo = 0;
 
-
-    public function definirCpf(string $cpf)
+    public function __construct(string $cpfTitular, string $nomeTitular)
     {
-        $this -> cpfTitular = $cpf;
-
-    }
-
-    public function definirNome(string $nome)
-    {
-        $this -> nomeTitular = $nome;
+        $this -> cpfTitular = $cpfTitular;
+            if(strlen($nomeTitular) < 3){
+                echo "Nome precisa ter no minímo 3 caracteres";
+                exit();
+            }
+        $this -> nomeTitular = $nomeTitular;
+        $this -> saldo = 0;
     }
 
     public function sacar(float $valorAsacar)
@@ -35,7 +34,7 @@ class Conta
 
     }
 
-    public function depositar(float $valorAdepositar): void
+    public function depositar(float $valorAdepositar)
     {
         if ($valorAdepositar <0){
             echo "Você precisa digitar um valor válido";
@@ -45,7 +44,7 @@ class Conta
         
     }
 
-    public function transferir(float $valorAtransferir, conta $contaDestino): void
+    public function transferir(float $valorAtransferir, conta $contaDestino)
     {
         if($valorAtransferir > $this -> saldo){
             echo "Saldo indisponivel";
@@ -61,12 +60,17 @@ class Conta
         return $this->saldo;
     }
 
-    public function recuperarCpfTitular(): string
+    public function getRecuperarCpfTitular()
     {
         return $this -> cpfTitular;
     }
 
-    public function recuperarNomeTitular(): string
+    public function setRecuperarCpfTitular($cpf)
+    {
+        $this -> cpfTitular = $cpf;
+    }
+
+    public function recuperarNomeTitular()
     {
         return $this -> nomeTitular;
     }

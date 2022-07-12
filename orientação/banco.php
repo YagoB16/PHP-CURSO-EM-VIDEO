@@ -2,14 +2,15 @@
 
 require_once 'conta.php';
 
-$umaConta = new conta();
+$umaConta = new conta("458.980.758-01", "Yago");
 
-$umaConta -> definirNome('Yago');
-$umaConta -> definirCpf('123.465.987-09');
-$umaConta -> depositar(980);
 
-$umaConta -> sacar(500);
+
+
+
 
 echo "Saldo: " . $umaConta -> recuperarSaldo() . PHP_EOL;
-echo "CPF: ". $umaConta -> recuperarCpfTitular() . PHP_EOL;
-echo "Nome: ". $umaConta -> recuperarNomeTitular();
+echo "CPF: ". $umaConta -> getRecuperarCpfTitular() . PHP_EOL;
+echo "Nome: ". $umaConta -> recuperarNomeTitular() . PHP_EOL;
+
+var_dump($umaConta);

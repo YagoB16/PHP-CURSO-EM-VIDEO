@@ -1,5 +1,6 @@
 <?php 
 require_once 'campeoes.php';
+require_once 'classeLuta.php';
 
 $l = [0, 1, 2, 3];
 
@@ -27,8 +28,8 @@ $l[2] = new lutador(
     "Yago",
     "Bahia",
     21,
-    1.88,
-    70.3,
+    1.78,
+    71.2,
     2,
     1,
     4
@@ -38,11 +39,14 @@ $l[3] = new lutador(
     "Afeganistão",
     20,
     1.77,
-    74.2,
+    73.2,
     3,
     1,
     3
 );
 
-$l[3] -> apresentar();
+$luta = new luta();
+$luta -> marcarLuta($l[2], $l[2]);
+$luta -> lutar();
+$l[2] -> status();
 $l[3] -> status();

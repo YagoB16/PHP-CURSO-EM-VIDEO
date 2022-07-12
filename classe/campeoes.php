@@ -29,16 +29,17 @@ class lutador{
 
     public function apresentar()
     {
-        echo "Lutador: " . $this ->getNome() . PHP_EOL;
-        echo "Origem: " . $this -> getNacionalidade() . PHP_EOL;
-        echo "idade: " . $this -> getIdade() . PHP_EOL;
-        echo "Altura: " . $this -> getAltura() . PHP_EOL;
-        echo "Peso: " . $this -> getPeso() . PHP_EOL;
+        echo "Lutador: " . $this ->getNome(). " ";
+        echo "veio diretamente de " . $this -> getNacionalidade() . ", ";
+        echo "tem " . $this -> getIdade() . " de idade, ";
+        echo "com " . $this -> getAltura() . " de altura ";
+        echo "e pesando apenas: " . $this -> getPeso() . " kg" . PHP_EOL;
     }
 
     public function status()
     {
-        echo "Nome: " . $this -> getNome() . PHP_EOL;
+        echo "------------" . PHP_EOL;
+        echo "Nome: " . $this ->getNome() . PHP_EOL;
         echo "Categoria: " . $this -> getCategoria() . PHP_EOL;
         echo "Vitorias:" . $this -> getVitorias() . PHP_EOL;
         echo "Derrotas: " . $this -> getDerrotas() . PHP_EOL;
@@ -132,9 +133,9 @@ class lutador{
         }
     }
 
-    public function setVitorias(int $vi)
+    public function setVitorias(int $vitorias)
     {
-        $this -> vitoria = $vi;
+        $this -> vitorias = $vitorias;
     }
 
     public function setDerrotas(int $de)
