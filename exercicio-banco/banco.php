@@ -3,7 +3,7 @@
 require_once 'conta.php';
 
 $umaConta = new conta("458.980.758-01", "Yago");
-
+$umaConta -> sacar(300);
 
 
 

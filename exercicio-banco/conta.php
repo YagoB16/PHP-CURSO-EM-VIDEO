@@ -1,7 +1,5 @@
 <?php
 
-use conta as GlobalConta;
-
 //$this aponta para um objeto na memória, no caso o objeto em execução, aponta para si própria;
 //Ela apontorá para o endereco de memoria onde a variavel esta sendo utilizada;
 //É uma pseudo-variável.

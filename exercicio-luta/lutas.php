@@ -46,7 +46,9 @@ $l[3] = new lutador(
 );
 
 $luta = new luta();
-$luta -> marcarLuta($l[2], $l[2]);
+$luta -> marcarLuta($l[2], $l[3]);
 $luta -> lutar();
+echo PHP_EOL . "Status dos Lutadores";
+
 $l[2] -> status();
 $l[3] -> status();

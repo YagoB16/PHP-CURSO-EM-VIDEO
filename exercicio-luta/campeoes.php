@@ -38,7 +38,7 @@ class lutador{
 
     public function status()
     {
-        echo "------------" . PHP_EOL;
+        echo PHP_EOL ."------------" . PHP_EOL;
         echo "Nome: " . $this ->getNome() . PHP_EOL;
         echo "Categoria: " . $this -> getCategoria() . PHP_EOL;
         echo "Vitorias:" . $this -> getVitorias() . PHP_EOL;

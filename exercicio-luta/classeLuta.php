@@ -40,9 +40,7 @@ class luta
             case 1:
                 echo $this -> desafiado -> getNome() . " Venceu" . PHP_EOL;
                 $this -> desafiado -> ganharLuta();
-                $this -> desafiante -> perderLuta();
-               
-                
+                $this -> desafiante -> perderLuta();     
                 break;
             case 2:
                 echo $this -> desafiante ->getNome() . " Venceu" . PHP_EOL;
