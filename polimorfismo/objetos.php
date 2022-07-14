@@ -32,7 +32,8 @@ $a ->alimentar();
 print_r($a);
 
 $c = new cachorro();
-$c-> reagirDono(true);
+$c-> setPeso(4);
+$c-> reagirDono(false);
 $c-> reagirHora(17, 8);
 $c-> reagirFrase("Tchau");
 print_r($c);

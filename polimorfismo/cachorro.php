@@ -37,10 +37,12 @@ class cachorro extends lobo
             }else{
                 echo "Latir" . PHP_EOL;
             }
-        }elseif( $peso>10){
-            echo "Rosnar" . PHP_EOL;
-        }else{
-            echo "Ignorar" . PHP_EOL;
+            }else{
+                if( $peso>10){
+                    echo "Rosnar" . PHP_EOL;
+            }else{
+                echo "Ignorar" . PHP_EOL;
+            }
         }
     }
 }
