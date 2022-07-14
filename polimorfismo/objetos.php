@@ -5,6 +5,7 @@ require_once 'ave.php';
 require_once 'peixe.php';
 require_once 'reptil.php';
 require_once 'mamifero.php';
+require_once 'cachorro.php';
 
 $p = new peixe();
 $m = new mamifero();
@@ -29,3 +30,9 @@ $a ->locomover();
 $a ->alimentar();
 
 print_r($a);
+
+$c = new cachorro();
+$c-> reagirDono(true);
+$c-> reagirHora(17, 8);
+$c-> reagirFrase("Tchau");
+print_r($c);
