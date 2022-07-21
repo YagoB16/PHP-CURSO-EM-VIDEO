@@ -1,4 +1,4 @@
-<?php
+[11:32, 20/07/2022] Yago: <?php
 
 require_once 'pesso.php';
 require_once 'interfacee.php';
@@ -54,7 +54,8 @@ class video implements acoesVideo
     }
     public function setAvaliacao($avaliacao)
     {
-        $this -> avaliacao = $avaliacao;
+        $media = ($this->avaliacao + $avaliacao)/$this ->views;
+        $this -> avaliacao = $media;
     }
 
     public function play()

@@ -18,4 +18,22 @@ class gafanhoto extends pessoa
     {
         $this-> totAssistindo++;
     }
+
+    public function getLogin()
+    {
+        return $this-> login;
+    }
+    public function setLogin($login)
+    {
+        $this -> login = $login;
+    }
+
+    public function getTotAssistindo()
+    {
+        return $this -> totAssistindo;
+    }
+    public function setTotAssistindo($totAssistindo)
+    {
+        $this -> totAssistindo = $totAssistindo;
+    }
 }

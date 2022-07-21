@@ -1,30 +1,33 @@
 <?php
 
-//$this aponta para um objeto na memória, no caso o objeto em execução, aponta para si própria;
-//Ela apontorá para o endereco de memoria onde a variavel esta sendo utilizada;
-//É uma pseudo-variável.
 
-class Conta 
+/*$this aponta para um objeto na memória, no caso o objeto em execução, aponta para si própria;
+    Ela apontorá para o endereco de memoria onde a variavel esta sendo utilizada;
+    É uma pseudo-variável.*/
+
+class Conta//Classe
 {
     private string $cpfTitular;
     private string $nomeTitular;
     private float $saldo = 0;
 
-    public function __construct(string $cpfTitular, string $nomeTitular)
+    private static $numeroDeContas = 0;//É um atributo da classe e não da instancia (static).
+
+    public function __construct($cpfTitular, $nomeTitular)//"Instancia".
     {
-        $this -> cpfTitular = $cpfTitular;
-            if(strlen($nomeTitular) < 3){
-                echo "Nome precisa ter no minímo 3 caracteres";
-                exit();
-            }
-        $this -> nomeTitular = $nomeTitular;
-        $this -> saldo = 0;
+        $this->cpfTitular = $cpfTitular;
+        $this->validaNomeTitular($nomeTitular);
+        $this->nomeTitular = $nomeTitular;
+        $this->saldo = 0;
+        //$this -> $numeroDeContas++; // O resultado sempre será 1, pois está sendo acessada a instancia.
+       //Conta::$numeroDeContas++; //nomeDaClasse::$variavel; é possível acessar os atributos estáticos. Utilizar o ex abaixo, pq caso eu mude o nome da classe, seria necessário mudar tem todos locais onde o static está sendo usado. 
+        self::$numeroDeContas++; // É possível também utilizar self (É algo que utiliza o nome da classe em que ela está).
     }
 
     public function sacar(float $valorAsacar)
     {
         if($valorAsacar > $this->saldo){
-            echo "Saldo indisponível" . PHP_EOL;
+            echo "Saldo indisponível para saque!" . PHP_EOL;
             return;
         }
             $this -> saldo -= $valorAsacar;
@@ -32,7 +35,7 @@ class Conta
 
     }
 
-    public function depositar(float $valorAdepositar)
+    public function depositar(float $valorAdepositar): void
     {
         if ($valorAdepositar <0){
             echo "Você precisa digitar um valor válido";
@@ -42,10 +45,10 @@ class Conta
         
     }
 
-    public function transferir(float $valorAtransferir, conta $contaDestino)
+    public function transferir(float $valorAtransferir, conta $contaDestino): void
     {
         if($valorAtransferir > $this -> saldo){
-            echo "Saldo indisponivel";
+            echo "Saldo indisponivel para transferência!";
             return;
         }
             $this ->sacar($valorAtransferir);
@@ -58,18 +61,27 @@ class Conta
         return $this->saldo;
     }
 
-    public function getRecuperarCpfTitular()
+    public function recuperaNomeTitular()
     {
-        return $this -> cpfTitular;
+        return $this->nomeTitular;
+    }
+    
+    public function recuperaCpfTitular()
+    {
+        return $this->cpfTitular;
     }
 
-    public function setRecuperarCpfTitular($cpf)
+    private function validaNomeTitular(string $nomeTitular)
     {
-        $this -> cpfTitular = $cpf;
+        if(strlen($nomeTitular) < 3){
+            echo "Nome precisa ter pelo menos 3 caracteres";
+            exit();
+        }
     }
 
-    public function recuperarNomeTitular()
+    public static function recuperaNumeroDeContas()
     {
-        return $this -> nomeTitular;
+        return self::$numeroDeContas; 
     }
+
 }

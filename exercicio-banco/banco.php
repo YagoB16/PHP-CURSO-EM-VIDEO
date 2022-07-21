@@ -2,15 +2,15 @@
 
 require_once 'conta.php';
 
-$umaConta = new conta("458.980.758-01", "Yago");
-$umaConta -> sacar(300);
+$c[0] = new conta('298.984.877-01', "Ygor");
+$c[1] = new conta('238.098.087-53', 'Joares');
 
+$c[0] -> depositar(200);
+$c[1]-> sacar(10);
 
+//echo $c[] -> recuperarSaldo() . PHP_EOL;
+//echo $c[] -> recuperaCpfTitular() . PHP_EOL;
+//echo $c[] -> recuperaNomeTitular() . PHP_EOL;
 
-
-
-echo "Saldo: " . $umaConta -> recuperarSaldo() . PHP_EOL;
-echo "CPF: ". $umaConta -> getRecuperarCpfTitular() . PHP_EOL;
-echo "Nome: ". $umaConta -> recuperarNomeTitular() . PHP_EOL;
-
-var_dump($umaConta);
+print_r($c);
+echo conta::recuperanumeroDeContas(); //Mostrará o numero de contas criadas
