@@ -12,5 +12,5 @@ $c[1]-> sacar(10);
 //echo $c[] -> recuperaCpfTitular() . PHP_EOL;
 //echo $c[] -> recuperaNomeTitular() . PHP_EOL;
 
-print_r($c);
+var_dump($c);
 echo conta::recuperanumeroDeContas(); //Mostrará o numero de contas criadas
