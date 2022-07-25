@@ -1,86 +1,81 @@
 <?php
-require_once 'titular.php';
 
-/*$this aponta para um objeto na memória, no caso o objeto em execução, aponta para si própria;
-    Ela apontorá para o endereco de memoria onde a variavel esta sendo utilizada;
-    É uma pseudo-variável.*/
-
-class Conta extends titular //Classe
+class Conta
 {
-    
-    private float $saldo = 0;
+    private Titular $titular;
+    private float $saldo;
+    private static $numeroDeContas = 0; //atributo estático é da classe
 
-    private static $numeroDeContas = 0;//É um atributo da classe e não da instancia (static).
-
-    public function __construct($cpf, $nome)//"Instancia".
+    public function __construct(Titular $titular)
     {
-        $this->cpf = $cpf;
-        $this->validaNomeTitular($nome);
-        $this->nome = $nome;
+        $this->titular = $titular;
         $this->saldo = 0;
-        //$this -> $numeroDeContas++; // O resultado sempre será 1, pois está sendo acessada a instancia.
-       //Conta::$numeroDeContas++; //nomeDaClasse::$variavel; é possível acessar os atributos estáticos. Utilizar o ex abaixo, pq caso eu mude o nome da classe, seria necessário mudar tem todos locais onde o static está sendo usado. 
-        self::$numeroDeContas++; // É possível também utilizar self (É algo que utiliza o nome da classe em que ela está).
+
+        #Conta::$numeroDeContas++;
+        # pode ser substituída a Conta por self:
+        self::$numeroDeContas++;
     }
 
-    public function sacar(float $valorAsacar)
+    # quando a instância deixa de existir, ou seja, quando não há mais nenhuma referência para o objeto em questão, entra no __destruct e faz a limpeza de memória
+    public function __destruct()
     {
-        if($valorAsacar > $this->saldo){
-            echo "Saldo indisponível para saque!" . PHP_EOL;
+        self::$numeroDeContas--;
+    }
+
+    public function sacar(float $valorASacar): void
+    {
+        if ($valorASacar > $this->saldo) {
+            echo "Saldo indisponível";
             return;
         }
-            $this -> saldo -= $valorAsacar;
-        
 
+        $this->saldo -= $valorASacar;
     }
 
-    public function depositar(float $valorAdepositar): void
+    public function depositar(float $valorADepositar): void
     {
-        if ($valorAdepositar <0){
-            echo "Você precisa digitar um valor válido";
+        if ($valorADepositar < 0) {
+            echo "Valor precisa ser positivo";
             return;
         }
-            $this -> saldo += $valorAdepositar;
-        
+
+        $this->saldo += $valorADepositar;
     }
 
-    public function transferir(float $valorAtransferir, conta $contaDestino): void
+    public function transferir(float $valorATransferir, Conta $contaDestino): void
     {
-        if($valorAtransferir > $this -> saldo){
-            echo "Saldo indisponivel para transferência!";
+        if ($valorATransferir > $this->saldo) {
+            echo "Saldo indisponível";
             return;
         }
-            $this ->sacar($valorAtransferir);
-            $contaDestino-> depositar($valorAtransferir);
-        
+
+        $this->sacar($valorATransferir);
+        $contaDestino->depositar($valorATransferir);
     }
 
-    public function recuperarSaldo(): float
+    /**
+     * Get the value of saldo
+     */
+    public function getSaldo(): float
     {
         return $this->saldo;
     }
 
-    public function recuperaNomeTitular()
+   /**
+     * Get the value of titular
+     */
+    public function recuperaNomeTitular(): string
     {
-        return $this->nomeTitular;
-    }
-    
-    public function recuperaCpfTitular()
-    {
-        return $this->cpfTitular;
+        return $this->titular->getNome();
     }
 
-    private function validaNomeTitular(string $nomeTitular)
+    public function recuperaCpfTitular(): string
     {
-        if(strlen($nomeTitular) < 3){
-            echo "Nome precisa ter pelo menos 3 caracteres";
-            exit();
-        }
+        return $this->titular->cpf->getCpf();
     }
 
-    public static function recuperaNumeroDeContas()
+    public static function recuperaNumeroDeContas(): int
     {
-        return self::$numeroDeContas; 
+        return self::$numeroDeContas;
     }
-
 }
